@@ -23,15 +23,15 @@ sample serverless function with API gateway with AWS
 3. sls offline start (For more info go to [Serverless](https://www.serverless.com))
 
 ##### To Test serverless offline
-POST: curl -X POST http://localhost:3000/dev/sample --data '{ "text": "Learn Serverless" }'
+    POST: curl -X POST http://localhost:3000/dev/sample --data '{ "text": "Learn Serverless" }'
 
-PUT: curl -X PUT http://localhost:3000/dev/sample/{id} --data '{ "text": "Update Serverless" }'
+    PUT: curl -X PUT http://localhost:3000/dev/sample/{id} --data '{ "text": "Update Serverless" }'
 
-DELETE: curl -X PUT http://localhost:3000/dev/sample/{id}
+    DELETE: curl -X PUT http://localhost:3000/dev/sample/{id}
 
-GET: curl -X GET http://localhost:3000/dev/sample/{id}
+    GET: curl -X GET http://localhost:3000/dev/sample/{id}
 
-GET LIST:  curl -X GET http://localhost:3000/dev/sample
+    GET LIST:  curl -X GET http://localhost:3000/dev/sample
 
 ## For serverless AWS and DynamoDB
 
@@ -40,15 +40,15 @@ GET LIST:  curl -X GET http://localhost:3000/dev/sample
 3. serverless deploy (For more info go to [Serverless](https://www.serverless.com))
 
 ##### To Test serverless with dynamoDB
-POST: curl -X POST https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample --data '{ "text": "Learn Serverless" }'
+    POST: curl -X POST https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample --data '{ "text": "Learn Serverless" }'
 
-PUT: curl -X PUT https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id} --data '{ "text": "Update Serverless" }'
+    PUT: curl -X PUT https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id} --data '{ "text": "Update Serverless" }'
 
-DELETE: curl -X PUT https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id}
+    DELETE: curl -X PUT https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id}
 
-GET: curl -X GET https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id}
+    GET: curl -X GET https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id}
 
-GET LIST:  curl -X GET https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample
+    GET LIST:  curl -X GET https://XXX.execute-api.us-east-1.amazonaws.com/dev/sample
 
 ###### or
 
