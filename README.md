@@ -6,6 +6,7 @@ sample serverless function with API gateway with AWS
   ### Setting up severless connection to amazon via terminal
    1. npm install -g serverless
    2. serverless config credentials --provider provider --key key --secret secret
+   
         -- [Amazon Security Credential](https://console.aws.amazon.com/iam/home?region=us-east-1#/security_credentials)
         
         -- Go to "Access keys for CLI, SDK, & API access"
