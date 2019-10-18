@@ -13,13 +13,12 @@ sample serverless function with API gateway with AWS
 3. serverless deploy (For more info go to [Serverless](https://www.serverless.com))
 
 ### To Test serverless offline
-POST
-curl -X POST http://localhost:3000/dev/todos --data '{ "text": "Learn Serverless" }'
-PUT
-curl -X PUT http://localhost:3000/dev/todos/<id> --data '{ "text": "Update Serverless" }'
-DELETE
-curl -X PUT http://localhost:3000/dev/todos/<id>
-GET
-curl -X GET http://localhost:3000/dev/todos/<id>
-GET LIST
-curl -X GET http://localhost:3000/dev/todos
+POST: curl -X POST http://localhost:3000/dev/todos --data '{ "text": "Learn Serverless" }'
+
+PUT: curl -X PUT http://localhost:3000/dev/todos/<id> --data '{ "text": "Update Serverless" }'
+
+DELETE: curl -X PUT http://localhost:3000/dev/todos/<id>
+
+GET: curl -X GET http://localhost:3000/dev/todos/<id>
+
+GET LIST:  curl -X GET http://localhost:3000/dev/todos
