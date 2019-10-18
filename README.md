@@ -10,9 +10,9 @@ sample serverless function with API gateway with AWS
 ## For Serverless offline 
 1. git checkout serverless-offline
 2. yarn install/npm install
-3. serverless deploy (For more info go to [Serverless](https://www.serverless.com))
+3. sls offline start (For more info go to [Serverless](https://www.serverless.com))
 
-### To Test serverless offline
+##### To Test serverless offline
 POST: curl -X POST http://localhost:3000/dev/sample --data '{ "text": "Learn Serverless" }'
 
 PUT: curl -X PUT http://localhost:3000/dev/sample/{id} --data '{ "text": "Update Serverless" }'
@@ -22,3 +22,24 @@ DELETE: curl -X PUT http://localhost:3000/dev/sample/{id}
 GET: curl -X GET http://localhost:3000/dev/sample/{id}
 
 GET LIST:  curl -X GET http://localhost:3000/dev/sample
+
+## For serverless AWS and DynamoDB
+
+1. git checkout serverless-aws-dynamodb
+2. yarn install/npm install
+3. serverless deploy (For more info go to [Serverless](https://www.serverless.com))
+
+##### To Test serverless with dynamoDB
+POST: curl -X POST https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/sample --data '{ "text": "Learn Serverless" }'
+
+PUT: curl -X PUT https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id} --data '{ "text": "Update Serverless" }'
+
+DELETE: curl -X PUT https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id}
+
+GET: curl -X GET https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/sample/{id}
+
+GET LIST:  curl -X GET https://XXXXXXX.execute-api.us-east-1.amazonaws.com/dev/sample
+
+###### or
+
+Go to [Amazon DynamoDB](https://console.aws.amazon.com/dynamodb/home?region=us-east-1#tables:selected=serverless-carlo-dev;tab=items) to check the items if exists
