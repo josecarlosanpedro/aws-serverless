@@ -3,13 +3,15 @@
 sample serverless function with API gateway with AWS
 
 ## How to use
-  ###Setting up severless connection to amazon via terminall
+  ### Setting up severless connection to amazon via terminall
     1. npm install -g serverless
     2. serverless config credentials --provider provider --key key --secret secret
         -- [Amazon Security Credential](https://console.aws.amazon.com/iam/home?region=us-east-1#/security_credentials)
+        
         -- Go to "Access keys for CLI, SDK, & API access"
+        
         -- Click Create Access Key and it will generate your key and secret
-  ###Using this project 
+  ### Using this project 
     1. git clone https://github.com/josecarlosanpedro/aws-serverless.git
     2. yarn install/npm install
     3. serverless deploy (For more info go to [Serverless](https://www.serverless.com))
