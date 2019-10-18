@@ -1,11 +1,23 @@
 
 service: serverless-carlo
 
+frameworkVersion: ">=1.1.0 <2.0.0"
+
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: dev
-  region: us-east-1
+  environment:
+    DYNAMODB_TABLE: ${self:service}-${opt:stage, self:provider.stage}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
 
 
 functions:
@@ -20,6 +32,13 @@ functions:
     handler: Sample/Get/handler.get
     events:
       - http:
+          path: sample/{id}
+          method: GET
+          cors: true
+  get-list-sample:
+    handler: Sample/GetList/handler.list
+    events:
+      - http:
           path: sample
           method: GET
           cors: true
@@ -27,15 +46,33 @@ functions:
     handler: Sample/Update/handler.update
     events:
       - http:
-          path: sample
+          path: sample/{id}
           method: PATCH
           cors: true
   delete-sample:
     handler: Sample/Delete/handler.delete
     events:
       - http:
-          path: sample
+          path: sample/{id}
           method: DELETE
           cors: true
 plugins:
   - serverless-offline
+resources:
+  Resources:
+    TodosDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      DeletionPolicy: Retain
+      Properties:
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+        KeySchema:
+          -
+            AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}

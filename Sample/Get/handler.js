@@ -1,18 +1,35 @@
 'use strict';
 
-module.exports.get = async event => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify(
-      {
-        message: 'Go Serverless v1.0! Your Get function executed successfully!',
-        input: event,
-      },
-      null,
-      2
-    ),
+const AWS = require('aws-sdk'); // eslint-disable-line import/no-extraneous-dependencies
+
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+module.exports.get = (event, context, callback) => {
+  const params = {
+    TableName: process.env.DYNAMODB_TABLE,
+    Key: {
+      id: event.pathParameters.id,
+    },
   };
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // return { message: 'Go Serverless v1.0! Your function executed successfully!', event };
+  // fetch todo from the database
+  dynamoDb.get(params, (error, result) => {
+    // handle potential errors
+    if (error) {
+      console.error(error);
+      callback(null, {
+        statusCode: error.statusCode || 501,
+        headers: { 'Content-Type': 'text/plain' },
+        body: 'Couldn\'t fetch the todo item.',
+      });
+      return;
+    }
+
+    // create a response
+    const response = {
+      statusCode: 200,
+      body: JSON.stringify(result.Item),
+    };
+    callback(null, response);
+  });
 };
